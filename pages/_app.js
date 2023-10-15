@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import '@/styles/globals.css';
+import '@/styles/fonts.css';
 import '@/styles/blog.css';
 import '@/styles/navbar.css';
 
