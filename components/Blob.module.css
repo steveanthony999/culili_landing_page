@@ -1,8 +1,0 @@
-.flippedX {
-  transform: scaleX(-1);
-}
-
-.flippedXY {
-  transform: scaleX(-1);
-  transform: scaleY(-1);
-}
