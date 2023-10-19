@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   background: transparent;
-  padding: 16px;
+  padding: 2rem 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -13,11 +13,36 @@
 .link {
   color: #fff;
   text-decoration: none;
-  padding: 8px 16px;
+  margin: 0 16px;
+  padding: 10px 0;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  position: relative;
+  display: inline-block;
 }
 
-.link:hover {
-  background-color: #555;
+.link::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fe29d0;
+  transition: width 0.3s;
+}
+
+.link:hover::before,
+.link:active::before,
+.link:focus::before {
+  width: 100%;
+}
+
+.link:hover,
+.link:active,
+.link:focus {
+  color: #ff73b4;
+}
+
+.link:focus {
+  outline: none;
 }

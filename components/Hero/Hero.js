@@ -30,7 +30,7 @@ const Hero = () => {
                 placeholder="Email"
                 className={styles.input_email}
               />
-              <button className={styles.button_email}>Get early access</button>
+              <button className={styles.button_email}>Get Early Access</button>
             </div>
           </div>
         </div>
@@ -40,6 +40,9 @@ const Hero = () => {
               src={'/images/isodevchef.png'}
               alt="Developer working in Chef's kitchen"
             />
+            <div className={styles.Hero__circle_1}></div>
+            <div className={styles.Hero__circle_2}></div>
+            <div className={styles.Hero__circle_3}></div>
           </div>
         </div>
       </div>
