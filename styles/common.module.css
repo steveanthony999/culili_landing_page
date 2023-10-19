@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat&family=Poppins:wght@300;900&display=swap');
+
+.logo {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+}
+
+.heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.heading_light {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 3rem;
+  color: #53ccdb;
+  text-shadow: 0 0 5px #53ccdb, 0 0 10px #53ccdb, 0 0 15px #53ccdb,
+    0 0 20px #53ccdb;
+}
+
+.paragraph {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pill {
+  border: 2px solid #fe2d90;
+  padding: 4px 15px;
+  border-radius: 25px;
+  display: inline-block;
+  box-shadow: 0 0 10px #fe2d90, inset 0 0 10px #fe2d90;
+  color: #fe2d90;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
