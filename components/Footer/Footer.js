@@ -6,9 +6,8 @@ const Footer = () => {
   return (
     <footer className={styles.Footer}>
       <div className={styles.newsletter}>
-        <div className={styles.newsletter_image}>
-          <img src={'/images/guitardev.png'} alt="Developer playing guitar" />
-        </div>
+        <div className={styles.newsletter_circle_1}></div>
+        <div className={styles.newsletter_circle_2}></div>
         <div className={styles.newsletter__heading}>
           <h1 className={common.heading_medium}>Subscribe now!</h1>
         </div>
