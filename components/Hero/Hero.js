@@ -22,15 +22,15 @@ const Hero = () => {
             </p>
           </div>
           <div className={styles.Hero__cta}>
-            <div className={styles.inputWrapper}>
+            <div className={common.inputWrapper}>
               <input
                 type="email"
                 name="Hero__cta"
                 id="Hero__cta"
                 placeholder="Email"
-                className={styles.input_email}
+                className={common.input_email}
               />
-              <button className={styles.button_email}>Get Early Access</button>
+              <button className={common.button_email}>Get Early Access</button>
             </div>
           </div>
         </div>

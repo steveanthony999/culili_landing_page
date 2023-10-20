@@ -1,0 +1,41 @@
+.Footer {
+  width: 100vw;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.newsletter {
+  width: 1100px;
+  background: #2d3479;
+  padding: 2rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.newsletter_image {
+  position: absolute;
+  left: -240px;
+}
+
+.newsletter_image img {
+  width: 400px;
+}
+
+.newsletter__form {
+  width: 40%;
+  margin-top: 2rem;
+}
+
+.copyright {
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+}
