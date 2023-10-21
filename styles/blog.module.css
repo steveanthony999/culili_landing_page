@@ -1,7 +1,20 @@
+.Blog {
+  width: 100vw;
+  padding-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#00030c, var(--color-dark));
+  position: relative;
+  overflow: hidden;
+}
+
 .container {
+  width: var(--width);
+  padding: 4rem 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 2rem;
 }
 
 .card {

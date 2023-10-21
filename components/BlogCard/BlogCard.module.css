@@ -1,0 +1,32 @@
+.card {
+  border: 2px solid #2d3479;
+  border-radius: var(--border-radius-card);
+  padding: 16px;
+  padding-bottom: 2rem;
+  width: 345.33px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.card:hover {
+  border-color: #2d3479a0;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card_img_top {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius-button) var(--border-radius-button) 0 0;
+}
+
+.card_title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-poppins);
+  font-weight: 900;
+}
+
+.card_text {
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+  line-height: 1.75rem;
+}

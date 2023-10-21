@@ -1,7 +1,7 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import fetchContentfulData from '../lib/fetchContentfulData';
+import BlogCard from '../components/BlogCard/BlogCard';
 import styles from '@/styles/blog.module.css';
-import common from '@/styles/common.module.css';
 
 export async function getStaticProps() {
   const posts = await fetchContentfulData.fetchEntries('blogPost');
@@ -14,32 +14,21 @@ export async function getStaticProps() {
 
 export default function Blog({ posts }) {
   return (
-    <div className={styles.container}>
-      <h1>Blog Posts</h1>
-      {posts.map((post) => (
-        <div key={post.sys.id} className={styles.card}>
-          <img
-            src={post.fields.mainImage.fields.file.url}
-            alt={post.fields.mainImage.fields.title}
-            className={styles.card_img_top}
+    <div className={styles.Blog}>
+      <div className={styles.container}>
+        {posts.map((post) => (
+          <BlogCard
+            key={post.sys.id}
+            imageSrc={post.fields.mainImage.fields.file.url}
+            imageAlt={post.fields.mainImage.fields.title}
+            title={post.fields.title}
+            author={post.fields.Author}
+            publishedDate={post.fields.publishedDate}
+            body={truncateText(documentToHtmlString(post.fields.body))}
+            slug={post.fields.slug}
           />
-          <div className={styles.card_body}>
-            <h2 className={styles.card_title}>{post.fields.title}</h2>
-            <p>By: {post.fields.Author}</p>
-            <p className={styles.card_text}>
-              Published Date:{' '}
-              {new Date(post.fields.publishedDate).toLocaleDateString()}
-            </p>
-            <p className={styles.card_text}>
-              {post.fields.body &&
-                truncateText(documentToHtmlString(post.fields.body))}
-            </p>
-            <a href={`/blog/${post.fields.slug}`} className={common.btn}>
-              Read More
-            </a>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
