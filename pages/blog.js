@@ -1,5 +1,7 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import fetchContentfulData from '../lib/fetchContentfulData';
+import styles from '@/styles/blog.module.css';
+import common from '@/styles/common.module.css';
 
 export async function getStaticProps() {
   const posts = await fetchContentfulData.fetchEntries('blogPost');
@@ -12,27 +14,27 @@ export async function getStaticProps() {
 
 export default function Blog({ posts }) {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h1>Blog Posts</h1>
       {posts.map((post) => (
-        <div key={post.sys.id} className="card">
+        <div key={post.sys.id} className={styles.card}>
           <img
             src={post.fields.mainImage.fields.file.url}
             alt={post.fields.mainImage.fields.title}
-            className="card-img-top"
+            className={styles.card_img_top}
           />
-          <div className="card-body">
-            <h2 className="card-title">{post.fields.title}</h2>
+          <div className={styles.card_body}>
+            <h2 className={styles.card_title}>{post.fields.title}</h2>
             <p>By: {post.fields.Author}</p>
-            <p className="card-text">
+            <p className={styles.card_text}>
               Published Date:{' '}
               {new Date(post.fields.publishedDate).toLocaleDateString()}
             </p>
-            <p className="card-text">
+            <p className={styles.card_text}>
               {post.fields.body &&
                 truncateText(documentToHtmlString(post.fields.body))}
             </p>
-            <a href={`/blog/${post.fields.slug}`} className="btn">
+            <a href={`/blog/${post.fields.slug}`} className={common.btn}>
               Read More
             </a>
           </div>

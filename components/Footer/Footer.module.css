@@ -8,10 +8,10 @@
 }
 
 .newsletter {
-  width: 1100px;
+  width: var(--width);
   background: #2d3479;
   padding: 2rem;
-  border-radius: 15px;
+  border-radius: var(--border-radius-card);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +62,7 @@
 }
 
 .info {
-  width: 1100px;
+  width: var(--width);
   margin-top: 3rem;
   display: flex;
   flex-direction: row;
@@ -102,7 +102,7 @@
 }
 
 .Footer__links {
-  width: 1100px;
+  width: var(--width);
   display: flex;
   flex-direction: row;
   justify-content: space-between;

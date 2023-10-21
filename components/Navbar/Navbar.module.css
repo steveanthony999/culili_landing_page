@@ -22,7 +22,7 @@
   text-decoration: none;
   margin: 0 16px;
   padding: 10px 0;
-  border-radius: 4px;
+  border-radius: var(--border-radius-button);
   position: relative;
   display: inline-block;
 }
@@ -34,7 +34,7 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: #fe29d0;
+  background-color: var(--color-pink);
   transition: width 0.3s;
 }
 
@@ -47,7 +47,7 @@
 .link:hover,
 .link:active,
 .link:focus {
-  color: #ff73b4;
+  color: var(--color-light-pink);
 }
 
 .link:focus {
