@@ -12,8 +12,8 @@
 }
 
 .scrolled {
-  background: rgba(45, 52, 121, 0.2);
   backdrop-filter: blur(20px);
+  background: rgba(45, 52, 121, 0.2);
   padding: 0.5rem 0;
 }
 

@@ -48,6 +48,51 @@ const Footer = () => {
         </div>
       </div>
       <div className={common.line}></div>
+      <div className={styles.Footer__links}>
+        <div className={styles.links__company}>
+          <Link className={common.logo} href="/">
+            Culili
+          </Link>
+          <p>
+            Made for freelance frontend developers who love modern frameworks
+            like React, Angular, Vue, and more!
+          </p>
+          <p>
+            Our aim is to provide a comprehensive backend platform for your
+            restaurant clients.
+          </p>
+          <Link href="/mission">Read more about the Culili Mission</Link>
+        </div>
+        <div className={styles.links__site}>
+          <div className={styles.column}>
+            <h4>Product</h4>
+            <br />
+            <Link href="/platform">Platform</Link>
+            <Link href="/themes">Themes</Link>
+          </div>
+          <div className={styles.column}>
+            <h4>Developers</h4>
+            <br />
+            <Link href="/core-concepts">Core Concepts</Link>
+            <Link href="/documentation">Documentation</Link>
+          </div>
+          <div className={styles.column}>
+            <h4>Resources</h4>
+            <br />
+            <Link href="/blog">Blog</Link>
+            <Link href="/tutorials">Tutorials</Link>
+          </div>
+          <div className={styles.column}>
+            <h4>Support</h4>
+            <br />
+            <Link href="/help-center">Help Center</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-of-service">Terms of Service</Link>
+            <Link href="/about">About Culili</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+        </div>
+      </div>
       <div className={styles.copyright}>
         &copy; {currentYear} Culili. All Rights Reserved.
       </div>
