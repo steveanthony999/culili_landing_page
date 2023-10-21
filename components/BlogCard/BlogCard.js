@@ -10,6 +10,7 @@ function BlogCard({
   publishedDate,
   body,
   slug,
+  tags,
 }) {
   return (
     <Link className={styles.card} href={`/blog/${slug}`}>
@@ -20,7 +21,13 @@ function BlogCard({
         <p className={styles.card_text}>
           Published Date: {new Date(publishedDate).toLocaleDateString()}
         </p>
-        <p className={styles.card_text}>{body}</p>
+        <div className={styles.card_text}>{body}</div>
+        {tags &&
+          tags.map((tag) => (
+            <span className={styles.tag} key={tag}>
+              {tag}
+            </span>
+          ))}
         <button className={common.btn}>Read More</button>
       </div>
     </Link>

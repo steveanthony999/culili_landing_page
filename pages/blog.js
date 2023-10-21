@@ -26,6 +26,7 @@ export default function Blog({ posts }) {
             publishedDate={post.fields.publishedDate}
             body={truncateText(documentToHtmlString(post.fields.body))}
             slug={post.fields.slug}
+            tags={post.fields.tags}
           />
         ))}
       </div>
