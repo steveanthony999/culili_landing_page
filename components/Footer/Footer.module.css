@@ -62,6 +62,40 @@
   margin-top: 2rem;
 }
 
+.info {
+  width: 1100px;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info__socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info__social_bg {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-left: 1rem;
+  background: #2d3479;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info__socials .info__social_bg img {
+  width: 1rem;
+}
+
+.info__company a {
+  margin-left: 2rem;
+}
+
 .copyright {
   padding: 1rem;
   position: absolute;

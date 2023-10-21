@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Footer.module.css';
 import common from '@/styles/common.module.css';
 
@@ -30,6 +31,23 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className={styles.info}>
+        <div className={styles.info__socials}>
+          <p className={common.bold}>Follow us on:</p>
+          <div className={styles.info__social_bg}>
+            <img src="/images/logo-white.png" alt="X logo" />
+          </div>
+        </div>
+        <div className={styles.info__company}>
+          <Link className={common.bold} href="/company">
+            Company
+          </Link>
+          <Link className={common.bold} href="/careers">
+            Careers
+          </Link>
+        </div>
+      </div>
+      <div className={common.line}></div>
       <div className={styles.copyright}>
         &copy; {currentYear} Culili. All Rights Reserved.
       </div>

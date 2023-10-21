@@ -17,8 +17,9 @@ const Hero = () => {
           </div>
           <div className={styles.Hero__sub_heading}>
             <p className={common.paragraph}>
-              Move beyond common website builders and create unique, next-gen
-              experiences for your restaurant clients.
+              Move your restaurant clients beyond common website builders and
+              create unique, next-gen experiences using your favorite frontend
+              frameworks.
             </p>
           </div>
           <div className={styles.Hero__cta}>
