@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Link from 'next/link';
+import { openModal } from '../../features/modalSlice';
 import common from '@/styles/common.module.css';
 import styles from './Navbar.module.css';
 
 function Navbar() {
+  const dispatch = useDispatch();
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,8 +22,15 @@ function Navbar() {
     };
   }, []);
 
+  const handleOpenModal = () => {
+    dispatch(openModal());
+  };
+
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav
+      id="navbar"
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+    >
       <div className={styles.Navbar__left}>
         <Link className={common.logo} href="/">
           Culili
@@ -40,9 +51,9 @@ function Navbar() {
         </Link>
       </div>
       <div className={styles.Navbar__right}>
-        <Link className={common.button_outline} href="/#">
+        <button className={common.button_outline} onClick={handleOpenModal}>
           Get Early Access
-        </Link>
+        </button>
       </div>
     </nav>
   );

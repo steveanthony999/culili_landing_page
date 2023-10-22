@@ -1,14 +1,11 @@
-import Navbar from '../components/Navbar/Navbar';
-import Footer from '@/components/Footer/Footer';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 import '@/styles/globals.css';
-// import '@/styles/blog.css';
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
-      <Navbar />
+    <Provider store={store}>
       <Component {...pageProps} />
-      <Footer />
-    </>
+    </Provider>
   );
 }
