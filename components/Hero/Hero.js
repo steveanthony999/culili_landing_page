@@ -1,7 +1,27 @@
+import { useState } from 'react';
 import styles from './Hero.module.css';
 import common from '@/styles/common.module.css';
 
 const Hero = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('');
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    if (response.ok) {
+      setStatus('success');
+    } else {
+      setStatus('error');
+    }
+  };
+
   return (
     <div className={styles.Hero}>
       <div className={styles.Hero__container}>
@@ -23,16 +43,33 @@ const Hero = () => {
             </p>
           </div>
           <div className={styles.Hero__cta}>
-            <div className={common.inputWrapper}>
-              <input
-                type="email"
-                name="Hero__cta"
-                id="Hero__cta"
-                placeholder="Email"
-                className={common.input_email}
-              />
-              <button className={common.button_email}>Get Early Access</button>
-            </div>
+            <form onSubmit={handleFormSubmit}>
+              <div className={common.inputWrapper}>
+                <input
+                  type="email"
+                  name="Hero__cta"
+                  id="Hero__cta"
+                  placeholder="Email"
+                  className={common.input_email}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <button type="submit" className={common.button_email}>
+                  Get Early Access
+                </button>
+              </div>
+            </form>
+            {status === 'success' && (
+              <div className={styles.successMessage}>
+                Signup successful! Check your email for further instructions.
+              </div>
+            )}
+            {status === 'error' && (
+              <div className={styles.errorMessage}>
+                Signup failed. Please try again.
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.Hero__container__right}>

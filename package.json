@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "contentful": "^10.6.2",
     "framer-motion": "^10.16.4",
+    "mongoose": "^7.6.3",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
