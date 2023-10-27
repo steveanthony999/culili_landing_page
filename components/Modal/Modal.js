@@ -7,8 +7,8 @@ import common from '@/styles/common.module.css';
 const Modal = () => {
   const dispatch = useDispatch();
 
+  const [status, setStatus] = useState('');
   const [isOthersChecked, setIsOthersChecked] = useState(false);
-
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
@@ -22,8 +22,6 @@ const Modal = () => {
     updatesOptIn: true,
     consentFollowUp: true,
   });
-
-  const [status, setStatus] = useState('');
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -72,6 +70,13 @@ const Modal = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    if (status === 'success') {
+      handleClose();
+      return;
+    }
+
+    setStatus('loading');
+
     const userData = {
       email,
       firstName,
@@ -83,17 +88,39 @@ const Modal = () => {
       updatesOptIn: optIns.updatesOptIn,
     };
 
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData),
-    });
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
 
-    if (response.ok) {
-      setStatus('success');
-    } else {
+      if (response.ok) {
+        setStatus('success');
+        resetForm();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
       setStatus('error');
     }
+  };
+
+  const resetForm = () => {
+    setFirstName('');
+    setEmail('');
+    setLocation('');
+    setSelectedTools({
+      React: true,
+      Angular: false,
+      Vuejs: false,
+      OtherTools: '',
+    });
+    setOptIns({
+      updatesOptIn: true,
+      consentFollowUp: true,
+    });
+    setIsOthersChecked(false);
   };
 
   return (
@@ -106,6 +133,7 @@ const Modal = () => {
             X
           </button>
         </div>
+
         <form onSubmit={handleFormSubmit}>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="firstName">
@@ -132,7 +160,7 @@ const Modal = () => {
               className={common.input_email}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              required={status === 'success' ? false : true}
             />{' '}
           </div>
 
@@ -251,9 +279,16 @@ const Modal = () => {
             }}
             disabled={optIns.consentFollowUp ? false : true}
           >
-            Submit
+            {status === 'success' ? 'Close Window' : 'Submit'}
           </button>
         </form>
+        {status === 'loading' && <div>Loading...</div>}
+        {status === 'success' && <div>Thank you for signing up!</div>}
+        {status === 'error' && (
+          <div>
+            There was a problem submitting your information. Please try again.
+          </div>
+        )}
       </div>
     </div>
   );
