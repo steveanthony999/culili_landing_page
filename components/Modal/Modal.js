@@ -9,6 +9,22 @@ const Modal = () => {
 
   const [isOthersChecked, setIsOthersChecked] = useState(false);
 
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [location, setLocation] = useState('');
+  const [selectedTools, setSelectedTools] = useState({
+    React: true,
+    Angular: false,
+    Vuejs: false,
+    OtherTools: '',
+  });
+  const [optIns, setOptIns] = useState({
+    updatesOptIn: true,
+    consentFollowUp: true,
+  });
+
+  const [status, setStatus] = useState('');
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -27,8 +43,57 @@ const Modal = () => {
     }
   };
 
-  const handleCheckboxChange = (e) => {
+  const handleOtherCheckboxChange = (e) => {
     setIsOthersChecked(e.target.checked);
+    if (!e.target.checked) {
+      setSelectedTools((prevState) => ({
+        ...prevState,
+        OtherTools: '',
+      }));
+    }
+  };
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setSelectedTools((prevState) => ({
+      ...prevState,
+      [name]: checked,
+    }));
+  };
+
+  const handleOptInsCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setOptIns((prevState) => ({
+      ...prevState,
+      [name]: checked,
+    }));
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    const userData = {
+      email,
+      firstName,
+      location,
+      tools: Object.keys(selectedTools).filter(
+        (tool) => selectedTools[tool] === true
+      ),
+      otherTools: selectedTools.OtherTools,
+      updatesOptIn: optIns.updatesOptIn,
+    };
+
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
+    });
+
+    if (response.ok) {
+      setStatus('success');
+    } else {
+      setStatus('error');
+    }
   };
 
   return (
@@ -41,17 +106,18 @@ const Modal = () => {
             X
           </button>
         </div>
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="firstName">
-              First Name&nbsp;<span>*</span>
+              First Name
             </label>
             <input
               type="text"
               id="firstName"
               name="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               className={common.input_email}
-              required
             />
           </div>
 
@@ -64,6 +130,8 @@ const Modal = () => {
               id="email"
               name="email"
               className={common.input_email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />{' '}
           </div>
@@ -76,6 +144,8 @@ const Modal = () => {
               type="text"
               id="location"
               name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
               className={common.input_email}
             />{' '}
           </div>
@@ -86,28 +156,33 @@ const Modal = () => {
               <label className={styles.label}>
                 <input
                   type="checkbox"
-                  name="tools"
+                  name="React"
                   value="React"
                   className={styles.inputField}
-                  defaultChecked
+                  checked={selectedTools.React}
+                  onChange={handleCheckboxChange}
                 />{' '}
                 React
               </label>
               <label className={styles.label}>
                 <input
                   type="checkbox"
-                  name="tools"
+                  name="Angular"
                   value="Angular"
                   className={styles.inputField}
+                  checked={selectedTools.Angular}
+                  onChange={handleCheckboxChange}
                 />{' '}
                 Angular
               </label>
               <label className={styles.label}>
                 <input
                   type="checkbox"
-                  name="tools"
+                  name="Vuejs"
                   value="Vue.js"
                   className={styles.inputField}
+                  checked={selectedTools.Vuejs}
+                  onChange={handleCheckboxChange}
                 />{' '}
                 Vue.js
               </label>
@@ -117,7 +192,7 @@ const Modal = () => {
                   name="tools"
                   value="others"
                   className={styles.inputField}
-                  onChange={handleCheckboxChange}
+                  onChange={handleOtherCheckboxChange}
                 />{' '}
                 Others
               </label>
@@ -129,6 +204,13 @@ const Modal = () => {
               className={common.input_email}
               style={{ marginTop: '1rem', opacity: isOthersChecked ? 1 : 0.5 }}
               disabled={!isOthersChecked}
+              value={selectedTools.OtherTools}
+              onChange={(e) =>
+                setSelectedTools((prevState) => ({
+                  ...prevState,
+                  OtherTools: e.target.value,
+                }))
+              }
             />
           </div>
 
@@ -140,6 +222,7 @@ const Modal = () => {
                   name="updatesOptIn"
                   defaultChecked
                   className={styles.inputField}
+                  onChange={handleOptInsCheckboxChange}
                 />{' '}
                 Opt-in for Updates
               </label>
@@ -152,13 +235,22 @@ const Modal = () => {
                   name="consentFollowUp"
                   defaultChecked
                   className={styles.inputField}
+                  onChange={handleOptInsCheckboxChange}
                 />{' '}
                 Consent to Follow-Up
               </label>
             </div>
           </div>
 
-          <button type="submit" className={common.button_wide}>
+          <button
+            type="submit"
+            className={common.button_wide}
+            style={{
+              opacity: optIns.consentFollowUp ? 1 : 0.5,
+              pointerEvents: !optIns.consentFollowUp && 'none',
+            }}
+            disabled={optIns.consentFollowUp ? false : true}
+          >
             Submit
           </button>
         </form>

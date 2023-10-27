@@ -9,11 +9,15 @@ const userSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
-    firstName: { type: String, trim: true },
-    location: { type: String, trim: true },
-    tools: [String],
-    updatesOptIn: { type: Boolean, default: false },
-    consentFollowUp: { type: Boolean, default: false },
+    firstName: { type: String, trim: true, default: 'noname' },
+    location: { type: String, trim: true, default: 'nolocation' },
+    tools: {
+      React: { type: Boolean, default: false },
+      Angular: { type: Boolean, default: false },
+      Vuejs: { type: Boolean, default: false },
+    },
+    otherTools: { type: String, trim: true, default: '' },
+    updatesOptIn: { type: Boolean, default: true },
   },
   { timestamps: true }
 );
