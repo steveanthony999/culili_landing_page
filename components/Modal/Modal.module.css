@@ -79,3 +79,10 @@
 .checkboxGroup .formGroup {
   margin-right: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 1rem;
+  }
+}

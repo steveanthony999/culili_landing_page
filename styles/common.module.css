@@ -167,3 +167,10 @@
   background: var(--color-dark-pink);
   box-shadow: var(--shadow-color-pink);
 }
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 1rem;
+  }
+}

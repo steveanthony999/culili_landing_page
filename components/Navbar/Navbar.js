@@ -9,6 +9,7 @@ function Navbar() {
   const dispatch = useDispatch();
 
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,10 @@ function Navbar() {
     dispatch(openModal());
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav
       id="navbar"
@@ -35,6 +40,16 @@ function Navbar() {
         <Link className={common.logo} href="/">
           Culili
         </Link>
+      </div>
+      <div className={styles.Navbar__mobile_right}>
+        <button
+          className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
+          onClick={toggleMenu}
+        >
+          <div />
+          <div />
+          <div />
+        </button>
       </div>
       <div className={styles.Navbar__center}>
         <Link className={styles.link} href="/howitworks">
@@ -54,6 +69,27 @@ function Navbar() {
         <button className={common.button_outline} onClick={handleOpenModal}>
           Get Early Access
         </button>
+      </div>
+      <div className={styles.Navbar__mobile}>
+        <div className={styles.Navbar__mobile_center}>
+          <Link className={styles.link} href="/howitworks">
+            How it works
+          </Link>
+          <Link className={styles.link} href="/roadmap">
+            Roadmap
+          </Link>
+          <Link className={styles.link} href="/pricing">
+            Pricing
+          </Link>
+          <Link className={styles.link} href="/blog">
+            Blog
+          </Link>
+        </div>
+        <div className={styles.Navbar__mobile_cta}>
+          <button className={common.button_outline} onClick={handleOpenModal}>
+            Get Early Access
+          </button>
+        </div>
       </div>
     </nav>
   );

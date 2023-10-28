@@ -53,3 +53,15 @@ a {
 input {
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  :root {
+    --width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --width: 95%;
+  }
+}

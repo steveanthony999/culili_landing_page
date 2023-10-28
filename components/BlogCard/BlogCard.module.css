@@ -38,3 +38,10 @@
   margin-right: 0.5rem;
   font-size: 0.8rem;
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+}
