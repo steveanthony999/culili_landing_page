@@ -150,23 +150,32 @@
   .Hero__circle_1,
   .Hero__circle_2,
   .Hero__circle_3 {
-    z-index: 1;
+    z-index: -1;
   }
 
   .Hero__container {
     width: 100%;
     max-width: 100%;
-    margin-top: 4rem;
+    margin-top: 4.5rem;
+    padding: 1rem;
     flex-direction: column;
-    position: relative;
-    z-index: 2;
   }
 
   .Hero__cta {
-    width: 90%;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .Hero__sub_heading {
+    margin-top: 1rem;
+  }
+
+  .Hero__container__right {
+    width: 100%;
+    margin-top: 2rem;
   }
 
   .Hero__image img {
-    width: 90%;
+    width: 100%;
   }
 }
