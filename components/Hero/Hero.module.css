@@ -139,9 +139,31 @@
 }
 
 @media (max-width: 768px) {
+  .Hero {
+    z-index: 0;
+  }
+
+  .Hero::after {
+    z-index: 0;
+  }
+
+  .Hero__circle_1,
+  .Hero__circle_2,
+  .Hero__circle_3 {
+    z-index: 1;
+  }
+
   .Hero__container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 4rem;
     flex-direction: column;
-    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .Hero__cta {
+    width: 90%;
   }
 
   .Hero__image img {
