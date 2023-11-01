@@ -61,6 +61,12 @@
   margin-top: 2rem;
 }
 
+.newsletter__message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #fff;
+}
+
 .info {
   width: var(--width);
   margin-top: 3rem;

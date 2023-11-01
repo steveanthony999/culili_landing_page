@@ -5,6 +5,8 @@ import common from '@/styles/common.module.css';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
   const formRef = useRef(null);
 
   const currentYear = new Date().getFullYear();
@@ -21,14 +23,21 @@ const Footer = () => {
           },
           body: JSON.stringify({ email }),
         });
+        const responseText = await response.text();
         if (response.ok) {
-          alert('Thank you for subscribing!');
+          setMessage('Thank you for subscribing!');
           setEmail('');
+        } else if (
+          response.status === 400 &&
+          responseText === 'Email is already subscribed'
+        ) {
+          setMessage('You are already subscribed.');
         } else {
-          console.error('Failed to subscribe:', response.statusText);
+          setMessage('Failed to subscribe. Please try again later.');
         }
       } catch (error) {
         console.error('Error:', error);
+        setMessage('An error occurred. Please try again later.');
       }
     }
   };
@@ -64,6 +73,7 @@ const Footer = () => {
               </button>
             </div>
           </form>
+          <div className={styles.newsletter__message}>{message}</div>
         </div>
       </div>
       <div className={styles.info}>
