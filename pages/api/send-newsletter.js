@@ -1,19 +1,16 @@
 const sgMail = require('@sendgrid/mail');
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  const post = req.body;
+  const { email } = req.body;
 
   const msg = {
-    to: 'steveanthony999@gmail.com',
+    to: email,
     from: 'steve@culili.com',
-    templateId: process.env.SENDGRID_NEWSLETTER_ID,
-    dynamic_template_data: {
-      subject: `New Blog Post: ${post.title}`,
-      postTitle: post.title,
-      postContent: post.content,
-    },
+    // templateId: process.env.SENDGRID_NEWSLETTER_ID,
+    subject: 'Welcome to Culili Newsletter!',
+    templateId: 'd-60ce7ca833a742559bc87e4f93c42626',
   };
 
   try {

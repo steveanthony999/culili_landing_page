@@ -1,9 +1,38 @@
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import styles from './Footer.module.css';
 import common from '@/styles/common.module.css';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const formRef = useRef(null);
+
   const currentYear = new Date().getFullYear();
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+
+    if (formRef.current.reportValidity()) {
+      try {
+        const response = await fetch('/api/send-newsletter', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+        if (response.ok) {
+          alert('Thank you for subscribing!');
+          setEmail('');
+        } else {
+          console.error('Failed to subscribe:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  };
+
   return (
     <footer className={styles.Footer}>
       <div className={styles.newsletter}>
@@ -19,16 +48,22 @@ const Footer = () => {
           </p>
         </div>
         <div className={styles.newsletter__form}>
-          <div className={common.inputWrapper}>
-            <input
-              type="email"
-              name="Hero__cta"
-              id="Hero__cta"
-              placeholder="Email"
-              className={common.input_email}
-            />
-            <button className={common.button_email}>Subscribe</button>
-          </div>
+          <form ref={formRef} onSubmit={handleSubscribe}>
+            <div className={common.inputWrapper}>
+              <input
+                type="email"
+                name="Hero__cta"
+                id="Hero__cta"
+                placeholder="Email"
+                className={common.input_email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <button type="submit" className={common.button_email}>
+                Subscribe
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div className={styles.info}>
