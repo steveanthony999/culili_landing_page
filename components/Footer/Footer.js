@@ -107,9 +107,11 @@ const Footer = () => {
       <div className={styles.info}>
         <div className={styles.info__socials}>
           <p className={common.bold}>Follow us on:</p>
-          <div className={styles.info__social_bg}>
-            <img src="/images/logo-white.png" alt="X logo" />
-          </div>
+          <picture>
+            <div className={styles.info__social_bg}>
+              <img src="/images/logo-white.png" alt="X logo" />
+            </div>
+          </picture>
         </div>
         <div className={styles.info__company}>
           <Link className={common.bold} href="/company">

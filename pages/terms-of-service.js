@@ -22,9 +22,9 @@ const TermsOfService = () => {
             <p>
               By accessing or using Culili, you are entering into a legal
               agreement with Steven Woodward, the sole proprietor behind Culili,
-              and agree to be bound by these Terms of Service. It's imperative
-              that you read and understand these terms thoroughly as they govern
-              your use of Culili and the services provided herein.
+              and agree to be bound by these Terms of Service. It&apos;s
+              imperative that you read and understand these terms thoroughly as
+              they govern your use of Culili and the services provided herein.
             </p>
             <p>
               Your use of Culili is conditional upon your acceptance of these
@@ -64,8 +64,8 @@ const TermsOfService = () => {
               <li>
                 <span>Acceptable Use</span>: Users are encouraged to use the
                 platform in a manner consistent with its intended purpose. While
-                there's flexibility in how the platform can be used, we urge
-                users to adhere to the core objective of aiding small,
+                there&apos;s flexibility in how the platform can be used, we
+                urge users to adhere to the core objective of aiding small,
                 non-franchise restaurants.
               </li>
               <li>
@@ -116,9 +116,9 @@ const TermsOfService = () => {
               <li>
                 <span>Account Security</span>: Users are responsible for
                 maintaining the confidentiality of their account credentials,
-                including their password. It's essential to keep your account
-                secure to prevent unauthorized access and ensure a safe user
-                experience on Culili.
+                including their password. It&apos;s essential to keep your
+                account secure to prevent unauthorized access and ensure a safe
+                user experience on Culili.
               </li>
               <li>
                 <span>Unique Accounts</span>: Each user is allowed to have one
@@ -129,9 +129,9 @@ const TermsOfService = () => {
               </li>
               <li>
                 <span>Unauthorized Access</span>: In the event of any suspected
-                unauthorized access to your account, it's crucial to contact us
-                immediately. Prompt reporting can aid in ensuring the security
-                of your account and mitigate any potential issues.
+                unauthorized access to your account, it&apos;s crucial to
+                contact us immediately. Prompt reporting can aid in ensuring the
+                security of your account and mitigate any potential issues.
               </li>
               <p>
                 Culili is dedicated to providing a secure and straightforward
@@ -264,7 +264,7 @@ const TermsOfService = () => {
             <ul>
               <li>
                 <span>Non-Payment</span>: Failure to pay the subscription fees
-                as required to maintain access to Culili's services.
+                as required to maintain access to Culili&apos;s services.
               </li>
               <li>
                 <span>User-Led Termination</span>: Users have the right to

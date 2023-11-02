@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Image } from 'next/image';
 import styles from './BlogCard.module.css';
 import common from '@/styles/common.module.css';
 
@@ -14,7 +15,9 @@ function BlogCard({
 }) {
   return (
     <Link className={styles.card} href={`/blog/${slug}`}>
-      <img src={imageSrc} alt={imageAlt} className={styles.card_img_top} />
+      <picture>
+        <img src={imageSrc} alt={imageAlt} className={styles.card_img_top} />
+      </picture>
       <div className={styles.card_body}>
         <h2 className={styles.card_title}>{title}</h2>
         <p>By: {author}</p>

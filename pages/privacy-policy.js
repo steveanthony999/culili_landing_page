@@ -203,9 +203,9 @@ const PrivacyPolicy = () => {
               </li>
               <li>
                 <span>Opt-out</span>: While the information we collect is
-                crucial for the functioning of Culili's services, users have the
-                option to opt-out. However, this may affect the services we are
-                able to provide.
+                crucial for the functioning of Culili&apos;s services, users
+                have the option to opt-out. However, this may affect the
+                services we are able to provide.
               </li>
               <li>
                 <span>Data Download</span>: Users have the right to download
@@ -215,9 +215,9 @@ const PrivacyPolicy = () => {
                 <span>Data Deletion</span>: Users can request the deletion of
                 their personal information by contacting us. Furthermore, we
                 have a process in place to automatically remove user information
-                60 days after they've suspended service. Notifications regarding
-                data deletion will be sent on the day of suspension, 30 days
-                before deletion, 14 days before deletion, 7 days before
+                60 days after they&apos;ve suspended service. Notifications
+                regarding data deletion will be sent on the day of suspension,
+                30 days before deletion, 14 days before deletion, 7 days before
                 deletion, 2 days before deletion, 1 day before deletion, the day
                 of deletion, and after deletion to ensure our users are
                 well-informed.
@@ -277,11 +277,11 @@ const PrivacyPolicy = () => {
               be posted on our website for your review.
             </p>
             <p>
-              It's important to us that you stay informed about how we protect
-              your privacy. Continued use of Culili's platform after receiving
-              notice of the changes implies your acceptance of the updated
-              Privacy Policy. We encourage our users to regularly review this
-              policy to stay informed.
+              It&apos;s important to us that you stay informed about how we
+              protect your privacy. Continued use of Culili&apos;s platform
+              after receiving notice of the changes implies your acceptance of
+              the updated Privacy Policy. We encourage our users to regularly
+              review this policy to stay informed.
             </p>
           </section>
 

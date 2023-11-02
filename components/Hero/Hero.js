@@ -54,10 +54,12 @@ const Hero = () => {
         </div>
         <div className={styles.Hero__container__right}>
           <div className={styles.Hero__image}>
-            <img
-              src={'/images/isodevchef.png'}
-              alt="Developer working in Chef's kitchen"
-            />
+            <picture>
+              <img
+                src={'/images/isodevchef.png'}
+                alt="Developer working in Chef's kitchen"
+              />
+            </picture>
             <div className={styles.Hero__circle_1}></div>
             <div className={styles.Hero__circle_2}></div>
             <div className={styles.Hero__circle_3}></div>
