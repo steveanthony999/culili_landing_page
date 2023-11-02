@@ -1,5 +1,7 @@
 import dbConnect from '../../../util/dbConnect';
 import User from '../../../models/User';
+import { subscribeNewsletter } from '../send-newsletter';
+import { sendWelcomeEmail } from '../send-welcome';
 
 dbConnect();
 
@@ -9,7 +11,15 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
-        const { email, ...otherData } = req.body;
+        const { email, firstName, updatesOptIn, ...otherData } = req.body;
+
+        if (updatesOptIn) {
+          try {
+            await subscribeNewsletter(email);
+          } catch (error) {
+            console.error('Newsletter subscription error:', error);
+          }
+        }
 
         const user = await User.findOneAndUpdate(
           { email },
@@ -20,6 +30,12 @@ export default async (req, res) => {
             setDefaultsOnInsert: true,
           }
         );
+
+        try {
+          await sendWelcomeEmail(email, firstName);
+        } catch (error) {
+          console.error('Resend welcome email error:', error);
+        }
 
         res.status(201).json({ success: true, data: user });
       } catch (error) {

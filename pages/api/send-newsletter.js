@@ -22,13 +22,10 @@ async function isSubscribed(email) {
   }
 }
 
-export default async (req, res) => {
-  const { email } = req.body;
-
+export async function subscribeNewsletter(email) {
   try {
     if (await isSubscribed(email)) {
-      res.status(400).send('Email is already subscribed');
-      return;
+      throw new Error('Email is already subscribed');
     }
 
     const addContactRequest = {
@@ -50,12 +47,8 @@ export default async (req, res) => {
     };
 
     await sgMail.send(msg);
-    res.status(200).send('Email sent');
   } catch (error) {
     console.error(error);
-    if (error.response) {
-      console.error(error.response.body);
-    }
-    res.status(500).send('Internal Server Error');
+    throw error;
   }
-};
+}

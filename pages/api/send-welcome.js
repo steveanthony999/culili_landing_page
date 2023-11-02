@@ -3,17 +3,18 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async (req, res) => {
+export async function sendWelcomeEmail(email, firstName) {
   try {
     const data = await resend.emails.send({
       from: 'Culili <steve@culili.com>',
-      to: ['steveanthony999@gmail.com'],
+      to: [email],
       subject: 'Welcome to Culili',
-      react: EmailTemplate({ firstName: 'John' }),
+      react: EmailTemplate({ firstName: firstName }),
     });
 
-    res.status(200).json(data);
+    return data;
   } catch (error) {
-    res.status(400).json(error);
+    console.error(error);
+    throw error;
   }
-};
+}

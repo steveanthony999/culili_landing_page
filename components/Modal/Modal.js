@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import HashLoader from 'react-spinners/HashLoader';
 import { closeModal, selectEmail } from '@/features/modalSlice';
 import styles from './Modal.module.css';
 import common from '@/styles/common.module.css';
+
+const override = {
+  display: 'block',
+  margin: '0 auto',
+};
 
 const Modal = () => {
   const dispatch = useDispatch();
   const globalEmail = useSelector(selectEmail);
 
   const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
   const [isOthersChecked, setIsOthersChecked] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState(globalEmail);
@@ -76,6 +83,7 @@ const Modal = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     if (status === 'success') {
       handleClose();
@@ -111,6 +119,8 @@ const Modal = () => {
     } catch (error) {
       setStatus('error');
     }
+
+    setLoading(false);
   };
 
   const resetForm = () => {
@@ -286,11 +296,20 @@ const Modal = () => {
             }}
             disabled={optIns.consentFollowUp ? false : true}
           >
-            {status === 'success' ? 'Close Window' : 'Submit'}
+            {status === 'success' ? (
+              'Thank you for signing up!'
+            ) : loading ? (
+              <HashLoader
+                color="#ffffff"
+                loading={loading}
+                size={30}
+                css={override}
+              />
+            ) : (
+              'Subscribe'
+            )}
           </button>
         </form>
-        {status === 'loading' && <div>Loading...</div>}
-        {status === 'success' && <div>Thank you for signing up!</div>}
         {status === 'error' && (
           <div>
             There was a problem submitting your information. Please try again.
