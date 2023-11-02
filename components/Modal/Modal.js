@@ -259,7 +259,7 @@ const Modal = () => {
             />
           </div>
 
-          <div className={styles.checkboxGroup}>
+          <div className={`${styles.checkboxGroup} ${styles.optins_group}`}>
             <div className={styles.formGroup}>
               <label className={styles.label}>
                 <input
@@ -306,7 +306,7 @@ const Modal = () => {
                 css={override}
               />
             ) : (
-              'Subscribe'
+              'Submit'
             )}
           </button>
         </form>
