@@ -383,7 +383,7 @@ const TermsOfService = () => {
               </li>
               <li>
                 <span>Contact Form</span>: Accessible on our website under the
-                "Contact Us" section.
+                Contact Us section.
               </li>
             </ul>
             <p>
