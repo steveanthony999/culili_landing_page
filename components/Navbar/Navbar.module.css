@@ -54,7 +54,7 @@
   outline: none;
 }
 
-.Navbar__mobile,
+.Navbar__mobile_menu,
 .Navbar__mobile_right {
   display: none;
 }
@@ -90,6 +90,33 @@
 
 .hamburger.open {
   transform: translateX(0.75rem);
+}
+
+.Navbar__mobile_menu.open_menu {
+  width: 100vw;
+  padding: 2rem 0;
+  padding-top: 8rem;
+  backdrop-filter: blur(20px);
+  background: rgba(45, 52, 121, 0.2);
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.Navbar__mobile_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Navbar__mobile_cta {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

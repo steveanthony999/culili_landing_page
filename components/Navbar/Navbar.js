@@ -34,7 +34,9 @@ function Navbar() {
   return (
     <nav
       id="navbar"
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+      className={`${styles.navbar} ${
+        scrolled && !isMenuOpen ? styles.scrolled : ''
+      }`}
     >
       <div className={styles.Navbar__left}>
         <Link className={common.logo} href="/">
@@ -70,7 +72,11 @@ function Navbar() {
           Get Early Access
         </button>
       </div>
-      <div className={styles.Navbar__mobile}>
+      <div
+        className={`${styles.Navbar__mobile_menu} ${
+          isMenuOpen ? styles.open_menu : ''
+        }`}
+      >
         <div className={styles.Navbar__mobile_center}>
           <Link className={styles.link} href="/howitworks">
             How it works
