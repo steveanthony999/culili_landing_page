@@ -1,0 +1,38 @@
+.Policies {
+  width: 100vw;
+  padding-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#00030c, var(--color-dark));
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  width: var(--width);
+  margin: 4rem 0;
+  line-height: 4rem;
+}
+
+.container h2 {
+  margin: 2rem 0;
+}
+
+.container p {
+  line-height: 2rem;
+  margin-top: 1rem;
+}
+
+.container ul {
+  margin: 2rem 0;
+}
+
+.container ul li {
+  line-height: 2rem;
+  margin-left: 4rem;
+}
+
+.container ul li span {
+  font-weight: bold;
+}
