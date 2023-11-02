@@ -1,11 +1,18 @@
 import React, { useState, useRef } from 'react';
+import HashLoader from 'react-spinners/HashLoader';
 import Link from 'next/link';
 import styles from './Footer.module.css';
 import common from '@/styles/common.module.css';
 
+const override = {
+  display: 'block',
+  margin: '0 auto',
+};
+
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const formRef = useRef(null);
 
@@ -13,6 +20,7 @@ const Footer = () => {
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (formRef.current.reportValidity()) {
       try {
@@ -40,6 +48,8 @@ const Footer = () => {
         setMessage('An error occurred. Please try again later.');
       }
     }
+
+    setLoading(false);
   };
 
   return (
@@ -69,7 +79,25 @@ const Footer = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <button type="submit" className={common.button_email}>
-                Subscribe
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    minWidth: '74px',
+                  }}
+                >
+                  {loading ? (
+                    <HashLoader
+                      color="#ffffff"
+                      loading={loading}
+                      size={30}
+                      css={override}
+                    />
+                  ) : (
+                    'Subscribe'
+                  )}
+                </div>
               </button>
             </div>
           </form>
