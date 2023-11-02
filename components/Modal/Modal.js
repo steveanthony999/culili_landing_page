@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { closeModal } from '@/features/modalSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal, selectEmail } from '@/features/modalSlice';
 import styles from './Modal.module.css';
 import common from '@/styles/common.module.css';
 
 const Modal = () => {
   const dispatch = useDispatch();
+  const globalEmail = useSelector(selectEmail);
 
   const [status, setStatus] = useState('');
   const [isOthersChecked, setIsOthersChecked] = useState(false);
   const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(globalEmail);
   const [location, setLocation] = useState('');
   const [selectedTools, setSelectedTools] = useState({
     React: true,
@@ -30,6 +31,12 @@ const Modal = () => {
       document.body.style.overflow = '';
     };
   }, []);
+
+  useEffect(() => {
+    if (globalEmail) {
+      setEmail(globalEmail);
+    }
+  }, [globalEmail]);
 
   const handleClose = () => {
     dispatch(closeModal());

@@ -93,24 +93,6 @@
   width: 700px;
 }
 
-.successMessage {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #28a745;
-  border-radius: var(--border-radius-card);
-  color: #fff;
-  text-align: center;
-}
-
-.errorMessage {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #dc3545;
-  border-radius: var(--border-radius-card);
-  color: #fff;
-  text-align: center;
-}
-
 @keyframes moveCircle1 {
   0% {
     transform: translateY(-60%);
